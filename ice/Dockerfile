@@ -2,6 +2,7 @@ FROM jonbrouse/java:7
 MAINTAINER Alexey Baikov @sysboss
 
 ENV INSTALL_DIR /opt/ice
+ENV ICE_HOME /opt/ice
 ENV HOME_DIR /root
 ENV GRAILS_VERSION 2.4.4
 ENV GRAILS_HOME ${HOME_DIR}/.grails/wrapper/${GRAILS_VERSION}/grails-${GRAILS_VERSION}
@@ -21,6 +22,7 @@ RUN \
   rm -rf .grails/wrapper/${GRAILS_VERSION}/grails-${GRAILS_VERSION}.zip
 
 WORKDIR ${INSTALL_DIR} 
+COPY assets/ice.properties ${INSTALL_DIR}/
 
 # Ice setup
 RUN \
